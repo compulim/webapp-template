@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "packages/app/build": true,
+    "packages/*/lib": true
+  }
+}

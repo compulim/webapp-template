@@ -1,0 +1,46 @@
+{
+  "name": "webapp-template",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">= 8.10.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "concurrently \"npm run build:app\" \"npm run build:server\"",
+    "build:app": "cd packages && cd app && npm run build",
+    "build:server": "concurrently \"cd packages && cd server && npm run build\"",
+    "build:server:watch": "concurrently \"cd packages && cd server && npm run build -- --watch\"",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/compulim/webapp-template.git"
+  },
+  "author": "William Wong <compulim@hotmail.com> (http://compulim.info/)",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/compulim/webapp-template/issues"
+  },
+  "homepage": "https://github.com/compulim/webapp-template#readme",
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/packages/app/",
+      "/packages/*/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^23.0.0-alpha.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "concurrently": "^3.5.1",
+    "gulp": "^4.0.0",
+    "jest": "^22.4.2",
+    "lerna": "^2.9.0"
+  }
+}
