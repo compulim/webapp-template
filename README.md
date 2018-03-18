@@ -8,16 +8,27 @@ React by unejected `create-react-app`. This make sure it will be easier for us t
 
 Redux for data store and [`glamor`](https://github.com/threepointone/glamor) for CSS.
 
+### Open questions
+
+Persist whole data store to IndexedDB when offline.
+
 ## Backend
 
 No ExpressJS or Restify. Instead of RESTful, we prefer pure Web Socket (no SockJS). Advantages:
 * Auth once: no need to check auth cookies for every call
 * Push updates: more like Server-Side Events but better
   * Same client code to handle update and request, `FETCH_FULFILLED` will be sent on response or update
+* No need to write contract (Swagger), everything is Flux actions
 
 Each client connection will have a Redux data store, storing very little to no data:
 * `redux-saga` for handling incoming calls
 * `redux-websocket-bridge` to send every actions over Web Socket to client
+
+### Open questions
+
+CPU and memory consumption for Redux data store could be high.
+
+Need to kill staled connections to free up resources. But we do the same on HTTP anyway (2 minutes timeout.)
 
 ## Package management
 
